@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Greeting by name</title>
+    <style>
+      * {
+        font-size: 50px;
+      }
+      body {
+        background-color: azure;
+      }
+    </style>
+  </head>
+  <body>
+    <center>
+      <h1>Greeting Application</h1>
+      <form onsubmit="show()">
+        <input type="text" id="name" placeholder="enter your name" />
+        <br /><br />
+        <input type="text" id="gender" placeholder="enter your gender" />
+        <br /><br />
+        <input type="submit" />
+        <h2 id="msg"></h2>
+      </form>
+      <script>
+        function show() {
+          event.preventDefault();
+          let name = document.getElementById("name");
+          let msg = document.getElementById("msg");
+          let gender = document.getElementById("gender");
+          let pronounce = "";
+          if (gender.value == "male") {
+            pronounce = "Mr.";
+          } else if (gender.value == "female") {
+            pronounce = "Ms.";
+          } else {
+            pronounce = "";
+          }
+
+          let d = new Date();
+          let hr = d.getHours();
+          let res = "";
+
+          if (hr < 12) {
+            res = "Good Morning " + pronounce + " " + name.value;
+          } else if (hr < 16) {
+            res = "Good Afternoon " + pronounce + " " + name.value;
+          } else {
+            res = "GOod Evening " + pronounce + " " + name.value;
+          }
+          msg.innerHTML = res;
+        }
+      </script>
+    </center>
+  </body>
+</html>
